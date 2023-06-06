@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传问题</title>
+</head>
+
+<body>
+    <h1>使用form上传</h1>
+    <form id="imageUploadForm">
+        <input type="file" name="image" id="imgaeInput">
+        <button>上传</button>
+    </form>
+    <script>
+        const form = document.getElementsByName('imageUploadForm')
+        form.addEventListener('submit',async(e)=>{
+            e.preventDefault();
+            //避免上传后页面刷新
+            const fileInput = document.getElementById('imgaeInput')
+            const file = fileInput.files[0]
+            //获取上传的文件
+            const fromData = new FormData()
+            fromData.append('image',file)
+
+            const reader = new FileReader()
+            reader.onloadend = function(){
+                const base64Data = reader.result
+                //这里就转换成了base64
+                //在后续的传输中也可以选择base64进行传输
+            }
+            try {
+                const res = await fetch('/api/upload',{
+                    method:"POST",
+                    body:formData
+                })
+                const data = await res.json()
+                console.log('upload success');
+            } catch (error) {
+                console.log('upload error');
+            }
+        })
+    </script>
+</body>
+
+</html>
