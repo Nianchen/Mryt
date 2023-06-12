@@ -1,0 +1,21 @@
+@import 'style.css';
+.container {
+  color: black;
+}
+.container h1 {
+  color: red;
+}
+.container p {
+  color: yellow;
+}
+.myclass {
+  font-size: 40;
+}
+.css3bianliang {
+  --fontSize: 10px;
+  font-size: var(--fontSize);
+}
+.father,
+.chlle {
+  position: relative;
+}

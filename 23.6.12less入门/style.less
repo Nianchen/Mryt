@@ -1,0 +1,36 @@
+// less身为一种预编译css，less本身对于属性值支持嵌套
+.container{
+    color: black;
+    h1{
+        color:red;
+    }
+    p{
+        color: yellow;
+    }
+}
+
+//less 支持直接对某些属性值进行运算
+//我们可以使用@定义变量
+@fontSize:20;
+.myclass{
+    font-size: @fontSize*2;
+    //40px
+}
+//目前在原生css中也可以使用变量
+.css3bianliang{
+    //局部变量
+    --fontSize:10px;
+    font-size: var(--fontSize);
+}
+
+//在less中我们可以像使用java中的class一样进行继承
+
+.father{
+    position: relative;
+}
+.chlle{
+    &:extend(.father);
+}
+
+//在less中一般使用@import进行导入
+@import './style.css';
